@@ -1,0 +1,40 @@
+<!-- views/index.html -->
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Revealer - Reveal.js multiplexer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="/css/reveal.min.css">
+        <link rel="stylesheet" href="/css/theme/sky.min.css" id="theme">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>Revealer</h1>
+                    <h3>Reveal.js multiplexer</h3>
+                </section>
+				<section data-background="#ff0000">
+					<h2>All CSS color formats are supported, like rgba() or hsl().</h2>
+				</section>
+				<section data-background="http://example.com/image.png">
+					<h2>This slide will have a full-size background image.</h2>
+				</section>
+				<section data-background="http://example.com/image.png" data-background-size="100px" data-background-repeat="repeat">
+					<h2>This background image will be sized to 100px and repeated.</h2>
+				</section>
+				<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-video-loop>
+					<h2>Video. Multiple sources can be defined using a comma separated list. Video will loop when the data-background-video-loop attribute is provided.</h2>
+				</section>
+				<section data-background-iframe="https://slides.com">
+					<h2>Embeds a web page as a background. Note that the page won't be interactive.</h2>
+				</section>
+            </div>
+        </div>
+        <script src="/js/scripts.js"></script>
+        <script type="text/javascript">
+            Reveal.initialize({history: true});
+        </script>
+    </body>
+</html>
