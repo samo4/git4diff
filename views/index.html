@@ -220,6 +220,7 @@
 						<li>branch “save as”</li>
 						<li>head</li>
 						<li>tag</li>
+					</ul>
 				</section>
 				
 				<section data-background="#ff0000">
@@ -251,26 +252,319 @@ git commit -m "[message]"
 				</section>
 				
 				<section>
-					<img src="/images/dear-git.jpg" width="400">
+					<img src="/images/dear-git.jpeg" width="600">
+				</section>
+				
+				<section>
+					<h2>Brskanje po repozitoriju</h2>
+					
+					 <pre >
+						<code data-trim>
+git init
+						</code>
+					</pre>
+					
+						<ul>
+							<li>datoteke o katerih git ne ve nič (untracked)</li>
+							<li>spremenjene datoteke (unstaged)</li>
+							<li>datoteke pripravljene za commit (staged)</li>
+						</ul>				
+				</section>
+				
+				<section>
+					<h2>Brskanje po spremembah </h2>
+					 <pre >
+						<code data-trim>
+git log -n [koliko]
+						</code>
+						<code data-trim class="fragment" >
+git log --oneline
+						</code>
+						<code data-trim class="fragment" >
+git log --author=[<kdo>]
+						</code>
+						
+						
+					</pre>
+					<p class="fragment" >
+					...
+					<p>	
+				</section>
+				
+				<section>
+					<h2>Brskanje po zgodovini </h2>
+					<pre >
+						<code data-trim>
+git checkout [commit]
+						</code>
+						<code data-trim class="fragment" >
+git checkout master
+						</code>
+					</pre>
+				</section>
+				
+				<section>
+					<h2>UNDO</h2>
+					<pre class="fragment">
+						<code data-trim>
+git log --oneline
+						</code>
+						<code data-trim  >
+git checkout [commit] [file]
+						</code>
+					</pre>
+				</section>
+				
+				<section>
+					<h2>UNDO od UNDO</h2>
+					<pre>
+						<code data-trim>
+git checkout HEAD [fajl]
+						</code>
+					</pre>
+					
+					<pre class="fragment">
+						<code data-trim  >
+git reset --hard
+						</code>
+					</pre>
+				</section>
+				
+				<section>
+					<h2>Primer</h2>
+					<pre>
+						<code data-trim>
+git add norost.cpp
+git commit -m "Smo napol poti v norost.cpp"
+# Se editiramo `norost.cpp` 
+# Se odlocimo, da ni bilo OK
+git reset --hard 
+						</code>
+					</pre>
+					<pre class="fragment">
+						<code data-trim  >
+git reset --hard HEAD~2
+						</code>
+					</pre>
+				</section>
+				
+				<section>
+					<h1>Vejenje</h1>
+					<p>po slovensko: branch</p>
+				</section>
+				
+				<section>
+					<pre>
+						<code data-trim>
+git branch nov-razvoj
+git checkout nov-razvoj
+						</code>
+					</pre>
+				</section>
+				
+				<section>
+					<h2>Hitra vaja</h2>
+					<p class="fragment">Kako preimenujemo branch?</p>
+				</section>
+				
+				<section>
+					<h2>Branch primer</h2>
+					<pre>
+						<code data-trim>
+git branch nov-feature
+git checkout nov-feature
+# nekaj delamo
+git add nov.txt
+git commit -m “opis “
+# nekaj delamo
+git add nov.txt
+git commit -m “izboljsava “
+#treba nekaj popravit na produkciji (bug 16)
+git checkout master
+# popravimo
+git add nakaj-za-popravit.txt
+git commit -m “smo popravili bug 16“
+						</code>
+					</pre>
+					<p class="fragment">Kakšno je zdaj stanje?</p>
+				</section>
+				
+				<section>
+					<h3>Združevanje</h3>
+					<h2>Merge</h2>
+				<pre>
+						<code data-trim>
+git checkout master
+git merge nov-feature
+						</code>
+					</pre>
+					<img src="/images/git-branch.jpg" >
+				</section>
+				
+				<section>
+					<h2>Vaja 1</h2>
+					<ol>
+						<li>init</li>
+						<li>naredi fajl in ga commitaj</li>
+						<li>naredi še en fajl</li>
+						<li>vrni v prvotno stanje </li>
+						<li>naredi tretji fajl  in ga commitaj</li>
+						<li>pokaži spremembe med dvema commitoma </li>
+						<li>vrni se nazaj v prvi commit </li>
+					</ol>
+				</section>
+				
+				<section>
+					<h2>Vaja 2</h2>
+					<ol>
+						<li>naredi branch</li>
+						<li>commit v ta branch</li>
+						<li>naredi nov branch</li>
+						<li>commit v ta branch</li>
+						<li>pokaži spremembe</li>
+						<li>izbriši branch</li>
+					</ol>
+				</section>
+				
+				<section>
+					<h2>GIT</h2>
+					<h3>malo globje</h3>
+				</section>
+				
+				<section data-background="/images/github-octocat.png" >
+				</section>
+				
+				<section>
+					<h2>Namestitev</h2>
+					<ul>
+						<li>git scm</li>
+						<li>tortoise git </li>
+						<li>Visual studio</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Konfiguracija</h2>
+					<pre>
+						<code data-trim>
+git config --global user.name
+git config --global user.email
+						</code>
+					</pre>
+					<p>_netrc</p>
+					<pre>
+						<code data-trim>
+machine [hostname1]
+login [login1]
+password [password1]
+						</code>
+					</pre>
+				</section>
+				
+				<section>
+					<h2>.gitignore</h2>
+				</section>
+				
+				<section>
+					<h2>Konflikti</h2>
+					<pre>
+						<code data-trim>
+Auto-merging miki.txt
+CONFLICT (content): Merge conflict in miki.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+/c/dev/git4diff (master|MERGING)$
+</code>
+</pre>
+<pre>
+						<code data-trim>
+&lt;&lt;&lt; HEAD
+osem
+==== 
+devet
+&gt;&gt;&gt; ime_veje master 
+</code>
+					</pre>
+				</section>	
+				
+				<section>
+					<h2>Kaj pa ko nas je več?</h2>
+				</section>
+				
+				<section data-background="/images/central-distributed.jpg"  data-background-size="900px" >
+				</section>
+				
+				<section>
+					<h2>Štart</h2>
+					<pre>
+						<code data-trim>
+git init 
+</code>
+<code data-trim  class="fragment">
+git clone [url]
+</code>
+</pre>
+				</section>
+				
+				<section>
+				<pre>
+					<code data-trim>
+git pull
+</code>
+<code data-trim>
+git push
+</code>
+</pre>
+				</section>
+				
+				<section>
+					<h2>Priporočen workflow</h2>
+					<pre>
+						<code data-trim>
+git pull
+#delo
+git status
+git add [kaj]
+git commit [opis]
+git push
+</code>
+</pre>
+				</section>
+				
+				<section>
+					<h2>Še en priporočen workflow</h2>
+					<h3>Centralized Workflow</h3>
+
+					<pre>
+						<code data-trim>
+git pull
+git branch kaj-bomo-delali
+git checkout kaj-bomo-delali
+#delo
+git add [kaj]
+git commit [opis]
+git push --set-upstream origin kaj-bomo-delali
+#nekdo testira naš branch
+git checkout master
+git merge kaj-bomo-delali
+</code>
+</pre>
+				</section>
+				
+				<section>
+					<h2>Še en primer</h2>
+					<pre>
+						<code data-trim>
+git checkout -b bug-#001 master
+# Fix the bug
+git checkout master
+git merge bug-#001
+git push
+</code>
+</pre>
 				</section>
 				
 				
-				
-				
-				
-				
-				<section data-background="http://example.com/image.png">
-					<h2>This slide will have a full-size background image.</h2>
-				</section>
-				<section data-background="http://example.com/image.png" data-background-size="100px" data-background-repeat="repeat">
-					<h2>This background image will be sized to 100px and repeated.</h2>
-				</section>
-				<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-video-loop>
-					<h2>Video. Multiple sources can be defined using a comma separated list. Video will loop when the data-background-video-loop attribute is provided.</h2>
-				</section>
-				<section data-background-iframe="https://slides.com">
-					<h2>Embeds a web page as a background. Note that the page won't be interactive.</h2>
-				</section>
             </div>
         </div>
         <script src="/js/scripts.js"></script>
