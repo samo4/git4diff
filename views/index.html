@@ -12,12 +12,253 @@
         <div class="reveal">
             <div class="slides">
                 <section>
-                    <h1>Revealer</h1>
-                    <h3>Reveal.js multiplexer</h3>
+                    <h1>Upravljanje izvorne kode</h1>
+					<h2>(Source Code Control).</h2>
                 </section>
-				<section data-background="#ff0000">
-					<h2>All CSS color formats are supported, like rgba() or hsl().</h2>
+				
+				<section>
+                    <h3>Samo Fabčič</h3>
+					<p>source control uporabljam cca 13 let.</p>
+					<p>programiram dlje, ampak za to ni nobenih dokazov.</p>
+					<ul>
+						<li>prezenacijo bom poslal po emailu</li>
+						<li>command line-a</li>
+					</ul>
+                </section>
+				
+				<section>
+					<img src="/images/git-budget.jpg" width="400">
 				</section>
+				
+				<section>
+                    <h2>Zakaj sistem za nadzor nad izvorno kodo?</h2>
+					<ul>
+						<li>kodo se popravlja na strežniku</li>
+						<li>na strežniku ostajajo stare datoteke</li>
+						<li>ne vemo, kdo in kdaj je spreminjal kodo na strežniku</li>
+						<li>dela več ljudi na isti kodi?</li>
+					</ul>
+				</section>
+				
+				<section>
+					<ul>
+						<li>izgubljena koda</li>
+						<li>zakaj je neka stvar v kodi?</li>
+						<li>spremeniti kodo v prejšnjo verzijo?</li>
+						<li>primerjat dve verziji?</li>
+					</ul>
+				</section>
+				
+				
+				<section>
+					<ul>
+						<li>Post mortem</li>
+						<li>kaj je razlika med dvema verzijama?</li>
+						<li>ste hoteli "eksperimentirat"?</li>
+						<li>je programer zapustil podjetje?</li>
+					</ul>
+				</section>
+				
+				<section>
+					<img src="/images/git-blame2.jpg"  width="400">
+				</section>
+				
+				<section>
+					<h2>Potenciale rešitve</h2>
+					<ul>
+						<li>formalni obrazci/postopki</li>
+						<li>omejitve dostopa</li>
+						<li>orodja, ki spremljajo spremembe na disku (audit)</li>
+						<li>backup</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Rešitev</h2>
+					<h3>Katerikoli source control</h3>
+					<p>napr.:</p>
+					<ul>
+						<li>GIT</li>
+						<li>Mercurial</li>
+					</ul>
+				</section>
+				
+				<section>
+                    <h2>Kaj je source control?</h2>
+					<ul>
+						<li>undo (kratkoročni/dolgoročni)</li>
+						<li>zgodovina (sprememb/lastništva)</li>
+						<li><em>omogoča</em> skupinsko delo</li>
+						<li>primerjava (verzija, datotek,..)</li>
+						<li>delo na različnih verzijah</li>
+					</ul>
+				</section>
+				
+				<section>
+                    <h2>Kaj ni source control?</h2>
+					<ul>
+						<li>backup</li>
+						<li>deployment</li>
+					</ul>
+				</section>
+				
+				<section>
+                    <h2>Orodja, ki dopolnjujejo source control</h2>
+					<ul>
+						<li>continuous integration server</li>
+						<li>TDD</li>
+						<li>Backup</li>
+						<li>...</li>
+					</ul>
+				</section>
+				
+				<section>
+                    <h2>En sam razlog zakaj</h2>
+					<ul>
+						<li>prihrani čas</li>
+					</ul>
+				</section>
+				
+				<section>
+                    <h2>Zakaj source control ni dober?</h2>
+					<ul>
+						<li>binarne datoteke</li>
+						<li>ne-transparenco</li>
+					</ul>
+				</section>
+				
+				<section>
+                    <h1>Principi</h1>
+				</section>
+				
+				<section>
+                    <h3>Kaj počne source control?</h3>
+					<ul>
+						<li>zapomni si točno
+							<ul>
+								<li>kaj smo spremenili</li>
+								<li>v katerem drevesu smo to naredili</li>
+							</ul>
+						</li>
+						<li>prejšnjo in novo stanje</li>
+						<li>vrstico</li>
+						<li>kdo,kdaj</li>
+						<li>in komentar</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h3>Osnovni postopek</h3>
+					<ul>
+						<li>pogledamo, kaj smo spremenili / dodali / zbrisali</li>
+						<li>kaj bomo shranili v source control</li>
+						<li>shranimo v source control s komentarjem
+							
+						</li>
+						<li>sinhroniziramo z ostalimi</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h3>Delo na spremembi / bugu</h3>
+					<ol>
+						<li>Označimo, da bomo delali na 
+							<ul>
+								<li>novi lastnosti</li>
+								<li>bugu</li>
+								<li>ideji</li>
+							</ul>
+						</li>
+						<li>delamo</li>
+						<li>nekaj vskoči</li>
+						<li>prestavimo delovno okolje</li>
+						<li>popravimo</li>
+						<li>prestavimo delovno okolje</li>
+						<li>testiramo/jo</li>
+						<li>vgradimo spremembo v glavno okolje</li>
+					</ol>
+				</section>
+				
+				<section data-background="#ff0000">
+					<h3>Dobre prakse</h3>
+					<ul>
+						<li>source control uporabljamo vedno</li>
+						<li>tudi če ni PNja</li>
+						<li>commitamo večkrat na dan, vsakič ko je neka majhna zaključena celota narejena</li>
+						<li>obvezen dober komentar</li>
+					<ul>
+				</section>
+				<section>
+					<h3>Dober komentar</h3>
+					<ul>
+						<li>&lt; 50 znakov v <em>prvi vrstici</em></li>
+						<li>zakaj smo to naredili</li>
+						<li>na kaj lahko to vpliva</li>
+						<li>link na opis buga</li>
+						<li>ne pisat, kar source control že ve</li>
+						<li>message ni namenjen računalniku</li>
+					<ul>
+					<ul>
+						<li>bad: spreminil sem datoteko x.y</li>
+						<li>good: spremenil sem barvo gumba na zahtevo O.X.</li>
+					</ul>
+				</section>
+				
+				<section data-background="#ff0000">
+					<h3>Besede</h3>
+				</section>
+				
+				<section>
+					<h3>Besede</h3>
+					<ul>
+						<li>repository</li>
+						<li>commit</li>
+						<li>checkout</li>
+						<li>diff</li>
+						<li>conflict</li>
+						<li>revision != version</li>
+						<li>branch “save as”</li>
+						<li>head</li>
+						<li>tag</li>
+				</section>
+				
+				<section data-background="#ff0000">
+					<h3>Če ni v source kontrolu, potem ni nikoli obstajalo.</h3>
+				</section>
+				
+				<section data-background="#ff0000">
+					<h3>Google odgovarja na vsa vprašanja (potem ko jih znamo postavit).</h3>
+				</section>
+				
+				
+				
+				<section>
+					<h1>GIT</h2>
+				</section>
+				
+				<section>
+					 <pre >
+						<code data-trim>
+git init
+						</code>
+						<code data-trim class="fragment" >
+git add [ime datoteka ali direktorija, ki ga bomo commitali]
+						</code>
+						<code data-trim class="fragment" >
+git commit -m "[message]"
+						</code>
+					</pre>
+				</section>
+				
+				<section>
+					<img src="/images/dear-git.jpg" width="400">
+				</section>
+				
+				
+				
+				
+				
+				
 				<section data-background="http://example.com/image.png">
 					<h2>This slide will have a full-size background image.</h2>
 				</section>
