@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
-@import url(https://fonts.googleapis.com/css?family=Roboto:300italic,300&subset=latin,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700,400italic,700italic);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
 .reveal a {
   line-height: 1.3em; }
@@ -22,7 +22,7 @@ body {
   background-color: #f7fbfc; }
 
 .reveal {
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 36px;
   font-weight: normal;
   color: #333; }
@@ -52,7 +52,7 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #333;
-  font-family: "Roboto", sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-weight: normal;
   line-height: 1.2;
   letter-spacing: -0.03em;
@@ -159,9 +159,11 @@ body {
   font-family: monospace;
   line-height: 1.2em;
   word-wrap: break-word;
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); }
+  background: #3f3f3f;
+  }
 
 .reveal code {
+	color: #dcdcdc;
   font-family: monospace; }
 
 .reveal pre code {

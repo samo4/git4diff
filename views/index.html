@@ -6,11 +6,15 @@
         <title>Revealer - Reveal.js multiplexer</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="stylesheet" href="/css/reveal.min.css">
-        <link rel="stylesheet" href="/css/theme/sky.min.css" id="theme">
+		<link rel="stylesheet" href="/lib/css/zenburn.min.css">
+		
+		
+        <link rel="stylesheet" href="/css/theme/sky2.min.css" id="theme">
     </head>
     <body>
         <div class="reveal">
             <div class="slides">
+			
                 <section>
                     <h1>Upravljanje izvorne kode</h1>
 					<h2>(Source Code Control).</h2>
@@ -20,8 +24,8 @@
                     <h3>Samo Fabčič</h3>
 					
 					<ul>
-					<li>source control uporabljam cca. 13 let.</li>
-					<li>programiram dlje, ampak za to ni nobenih dokazov.</li>
+						<li>source control uporabljam cca. 13 let.</li>
+						<li>programiram dlje, ampak za to ni nobenih dokazov.</li>
 						<li>prezentacijo bom poslal po emailu</li>
 						<li>command line-a</li>
 					</ul>
@@ -106,8 +110,8 @@
 				<section>
                     <h2>Orodja, ki dopolnjujejo source control</h2>
 					<ul>
-						<li>continuous integration server</li>
-						<li>TDD</li>
+						<li>sistem za avtomatsko testiranje</li>
+						<li>continious integration</li>
 						<li>Backup</li>
 						<li>...</li>
 					</ul>
@@ -115,7 +119,7 @@
 				
 				<section>
                     <h2>En sam razlog zakaj</h2>
-					<ul>
+					<ul class="fragment">
 						<li>prihrani čas</li>
 					</ul>
 				</section>
@@ -184,8 +188,10 @@
 					<h3>Dobre prakse</h3>
 					<ul>
 						<li>source control uporabljamo vedno</li>
-						<li>tudi če ni PNja</li>
-						<li>commitamo večkrat na dan, vsakič ko je neka majhna zaključena celota narejena</li>
+						<li>tudi če ga vodja projekta ni pripravil</li>
+						<li>pred commitom testiramo</li>
+						<li>commitamo večkrat na dan</li>
+						<li>commitamo zaključeno logično celoto <em>povezanih</em> sprememb (zakaj?)</li>
 						<li>obvezen dober komentar</li>
 					<ul>
 				</section>
@@ -206,11 +212,7 @@
 				</section>
 				
 				<section data-background="#ff0000">
-					<h3>Besede</h3>
-				</section>
-				
-				<section>
-					<h3>Besede</h3>
+					<h3>Slovar</h3>
 					<ul>
 						<li>repository</li>
 						<li>commit</li>
@@ -239,17 +241,15 @@
 				</section>
 				
 				<section>
-					 <pre >
-						<code data-trim>
-git init
-						</code>
-						<code data-trim class="fragment" >
-git add [ime datoteka ali direktorija, ki ga bomo commitali]
-						</code>
-						<code data-trim class="fragment" >
-git commit -m "[message]"
-						</code>
-					</pre>
+					<code data-trim>
+						git init 
+					</code>
+					<code data-trim class="fragment" >
+						git add [ime datoteke ali direktorija, ki ga bomo commitali]
+					</code>
+					<code data-trim class="fragment" >
+						git commit -m "[message]"
+					</code>
 				</section>
 				
 				<section>
@@ -258,23 +258,22 @@ git commit -m "[message]"
 				
 				<section>
 					<h2>Brskanje po repozitoriju</h2>
-					
-					 <pre >
-						<code data-trim>
+					<pre>
+					<code data-trim>
 git status
-						</code>
+					</code>
 					</pre>
 					
-						<ul>
-							<li>datoteke o katerih git ne ve nič (untracked)</li>
-							<li>spremenjene datoteke (unstaged)</li>
-							<li>datoteke pripravljene za commit (staged)</li>
-						</ul>				
+					<ul>
+						<li>datoteke o katerih git ne ve nič (untracked)</li>
+						<li>spremenjene datoteke (unstaged)</li>
+						<li>datoteke pripravljene za commit (staged)</li>
+					</ul>				
 				</section>
 				
 				<section>
 					<h2>Brskanje po spremembah </h2>
-					 <pre >
+					 <pre>
 						<code data-trim>
 git log -n [koliko]
 						</code>
@@ -282,11 +281,10 @@ git log -n [koliko]
 git log --oneline
 						</code>
 						<code data-trim class="fragment" >
-git log --author=[<kdo>]
+git log --author=[kdo]
 						</code>
+					</pre>	
 						
-						
-					</pre>
 					<p class="fragment" >
 					...
 					<p>	
@@ -294,14 +292,14 @@ git log --author=[<kdo>]
 				
 				<section>
 					<h2>Brskanje po zgodovini </h2>
-					<pre >
-						<code data-trim>
+					<pre>
+					<code data-trim>
 git checkout [commit]
-						</code>
-						<code data-trim class="fragment" >
+					</code>
+					<code data-trim class="fragment" >
 git checkout master
-						</code>
-					</pre>
+					</code>
+					</pre>	
 				</section>
 				
 				<section>
@@ -606,6 +604,7 @@ git push origin --tags
 						<li>github account</li>
 						<li>git help </li>
 						<li>http://www.google.com</li>
+						<li>http://www.git-tower.com/blog/git-cheat-sheet/</li>
 						<li>http://firstaidgit.io/</li>
 						<li>http://trevorburnham.com/presentations/year-of-git</li>
 						<li>http://41j.com/blog/2015/02/common-git-screwupsquestions-solutions/</li>
@@ -619,7 +618,15 @@ git push origin --tags
         </div>
         <script src="/js/scripts.js"></script>
         <script type="text/javascript">
-            Reveal.initialize({history: true});
+            Reveal.initialize({
+				history: true,
+				dependencies: [
+					// Interpret Markdown in <section> elements
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				]
+			});
         </script>
     </body>
 </html>
