@@ -650,6 +650,91 @@ git push origin --tags
 				<section>
 					<h2>Hvala!</h2>
 				</section>
+				
+				
+				<section>
+					<h2>Kako naredimo One.NET projekt</h2>
+					<ol>
+						<li>inicializiramo GIT repositorij</li>
+						<li>Nov projekt v Visual studio</li>
+						<li>Preko nuget paketov namestimo one.net</li>
+						<li>Iz SiteDefault skopiramo default datoteke (napr. web.config, LocalRewrite)</li>
+						<li>Dodamo profile za deploy s <em>transformacijami</em></li>
+						<li>Napišemo specifično kodo</li>
+						<li>Preko nuget namestimo specifične pakete</li>
+					</ol>
+				</section>
+				<section>
+					<h2>Konvencije za lokacije</h2>
+					<ul>
+						<li>vsi specifični elementi so v <span>~/site_specific</span></li>
+						<li>tja lahko kopiramo tudi preko publish skript</li>
+						<li>.dll datoteke so seveda v ~/bin</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Kako naredimo nuget paket</h2>
+					<ul>
+						<li>nuget je samo zip datoteka, ki sledi konvenciji</li>
+						<li>konvencija je:
+							<ul>
+								<li>dll za .NET 4.5 grejo v "lib/net45"</li>
+								<li>vse kar bi šlo v root gre v "content"</li>
+								<li>v rootu je datoeka imageprojeka.nuspec</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h2>.nuspec datoteka</h2>
+					<pre>
+					<code data-trim>
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+	<metadata>
+		<id>ZRSZ.Internal</id>
+		<version>1.22.0.0</version>
+		<title>ZRSZ Internal modules</title>
+		<authors>samof</authors>
+		<owners>ZRSZ</owners>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Package for custom modules by ZRSZ</description>
+		<copyright>Copyright © ZRSZ 2015</copyright>
+		<dependencies>
+		</dependencies>
+	</metadata>
+	...
+</package>
+					</code>
+					</pre>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						### .nuspec datoteka part 2
+						```
+						<files>
+						  <file src="_images\**.gif" target="content\site_specific\_images" />
+						  <file src="custom_modules\**.png" target="content\site_specific\custom_modules" />
+						  <file src="custom_modules\**.jpg" target="content\site_specific\custom_modules" />
+						  <file src="custom_modules\**.gif" target="content\site_specific\custom_modules" />
+						  <file src="custom_modules\**.ascx" target="content\site_specific\custom_modules" />
+						  <file src="custom_modules\**.aspx" target="content\site_specific\custom_modules" />
+						  <file src="custom_modules\**.rdlc" target="content\SiteDesktop\custom_modules" />
+						  <file src="custom_modules\**.xsd" target="content\site_specific\custom_modules" />
+						  <file src="bin\*.dll" target="lib\net45" />
+						</files>
+						```
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						### nuget.exe
+						```
+						NuGet.exe pack ZRSZ.Internal.nuspec -OutputDirectory .
+						NuGet.exe push .\*.nupkg AAAAAAAA -Source http://nuget.t.renderspace.net
+						```
+					</script>
+				</section>	
             </div>
         </div>
         <script src="/js/scripts.js"></script>
